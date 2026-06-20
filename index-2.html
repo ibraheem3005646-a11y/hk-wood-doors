@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>HK WOOD DOORS — ERP</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f2e26">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --green-900:#0a2218;
+  --green-800:#0f2e26;
+  --green-700:#1a4a3a;
+  --green-600:#1e5e48;
+  --green-500:#2b7a4b;
+  --green-100:#e8f5ee;
+  --green-50:#f0fdf4;
+  --gold:#c9a03d;
+  --gold-light:#fef3c7;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --gray-900:#0f172a;
+  --gray-700:#374151;
+  --gray-500:#6b7280;
+  --gray-300:#d1d5db;
+  --gray-100:#f3f4f6;
+  --gray-50:#f9fafb;
+  --white:#ffffff;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg:0 8px 32px rgba(0,0,0,0.14);
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-xl:20px;
+}
+
+body{font-family:'Inter',system-ui,sans-serif;background:#eef0f5;color:var(--gray-900);min-height:100vh;padding-bottom:70px;}
+
+.header{
+  background:linear-gradient(135deg,var(--green-900) 0%,var(--green-700) 100%);
+  color:white;padding:0 20px;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 20px rgba(0,0,0,0.25);
+  height:60px;display:flex;align-items:center;
+}
+.header-inner{max-width:1100px;margin:auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+.logo-area{display:flex;align-items:center;gap:12px;}
+.logo-icon{
+  width:40px;height:40px;
+  background:var(--gold);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  box-shadow:0 2px 8px rgba(201,160,61,0.4);
+}
+.logo-text h1{font-size:17px;font-weight:800;letter-spacing:0.3px;}
+.logo-text p{font-size:9px;opacity:0.65;letter-spacing:2.5px;text-transform:uppercase;margin-top:1px;}
+.header-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.hdr-btn{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.18);
+  color:white;padding:6px 14px;
+  border-radius:20px;font-size:11px;font-weight:600;
+  cursor:pointer;transition:0.2s;white-space:nowrap;
+}
+.hdr-btn:hover{background:rgba(255,255,255,0.2);}
+.hdr-btn.gold{background:var(--gold);border-color:var(--gold);color:white;}
+
+.container{max-width:1100px;margin:auto;padding:16px 16px 0;}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat-card{
+  background:white;border-radius:var(--radius-lg);
+  padding:16px;border:1px solid #e5e7eb;
+  box-shadow:var(--shadow-sm);
+  display:flex;align-items:center;gap:14px;
+  transition:0.2s;
+}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.stat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.stat-icon.green{background:var(--green-100);}
+.stat-icon.gold{background:var(--gold-light);}
+.stat-icon.blue{background:var(--blue-light);}
+.stat-icon.red{background:var(--red-light);}
+.stat-info .num{font-size:22px;font-weight:800;line-height:1.1;}
+.stat-info .lbl{font-size:10px;color:var(--gray-500);font-weight:500;margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;}
+.stat-info .sub{font-size:10px;color:var(--gray-500);margin-top:2px;}
+
+.card{background:white;border-radius:var(--radius-lg);border:1px solid #e5e7eb;box-shadow:var(--shadow-sm);margin-bottom:14px;overflow:hidden;}
+.card-head{
+  padding:13px 18px;border-bottom:1px solid #f0f2f5;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:700;font-size:14px;background:var(--gray-50);
+}
+.card-head .section-title{display:flex;align-items:center;gap:8px;}
+.card-body{padding:16px 18px;}
+
+.tab-bar{display:flex;gap:4px;background:white;border-radius:var(--radius-lg);padding:5px;border:1px solid #e5e7eb;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.tab-pill{flex:1;background:none;border:none;padding:9px 8px;border-radius:10px;font-size:11px;font-weight:600;color:var(--gray-500);cursor:pointer;transition:0.18s;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.tab-pill .t-icon{font-size:17px;}
+.tab-pill.active{background:var(--green-800);color:white;}
+.tab-pill:hover:not(.active){background:var(--gray-100);}
+
+.tab{display:none;}
+.tab.active{display:block;animation:fadeIn 0.25s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+.btn{border:none;padding:9px 18px;border-radius:30px;font-weight:600;font-size:12px;cursor:pointer;transition:0.2s;display:inline-flex;align-items:center;gap:6px;font-family:inherit;}
+.btn-primary{background:var(--green-800);color:white;}
+.btn-primary:hover{background:var(--green-700);transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,46,38,0.3);}
+.btn-gold{background:var(--gold);color:white;}
+.btn-gold:hover{background:#b8912e;transform:translateY(-1px);}
+.btn-outline{background:white;border:1.5px solid var(--gray-300);color:var(--gray-700);}
+.btn-outline:hover{background:var(--gray-50);border-color:var(--gray-500);}
+.btn-success{background:var(--green-500);color:white;}
+.btn-danger{background:var(--red);color:white;}
+.btn-danger:hover{background:#b91c1c;}
+.btn-sm{padding:6px 14px;font-size:11px;}
+.btn-xs{padding:4px 10px;font-size:10px;}
+.btn-icon{width:30px;height:30px;padding:0;border-radius:8px;justify-content:center;}
+
+.item-card{
+  background:var(--gray-50);border-radius:var(--radius-md);
+  padding:14px;margin-bottom:10px;
+  border:1px solid #e5e7eb;transition:0.2s;
+}
+.item-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);}
+.item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.item-title{font-weight:700;font-size:14px;color:var(--gray-900);}
+.item-sub{font-size:11px;color:var(--gray-500);margin-top:3px;line-height:1.6;}
+.item-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:30px;font-size:10px;font-weight:700;letter-spacing:0.3px;}
+.badge-paid{background:#d1fae5;color:#065f46;}
+.badge-unpaid{background:#fee2e2;color:#991b1b;}
+.badge-partial{background:#fef3c7;color:#92400e;}
+.badge-active{background:#dbeafe;color:#1e40af;}
+.badge-done{background:#d1fae5;color:#065f46;}
+
+.order-card{
+  background:white;border-radius:var(--radius-lg);
+  padding:16px;margin-bottom:12px;
+  border:1px solid #e5e7eb;
+  box-shadow:var(--shadow-sm);
+  transition:0.2s;
+}
+.order-card:hover{box-shadow:var(--shadow-md);border-color:#cbd5e1;}
+.order-card-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.order-no{font-size:10px;font-weight:700;color:var(--green-600);letter-spacing:1px;text-transform:uppercase;}
+.order-party{font-size:15px;font-weight:700;margin:2px 0 4px;}
+.order-meta{font-size:11px;color:var(--gray-500);display:flex;gap:12px;flex-wrap:wrap;}
+.order-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid #f0f2f5;flex-wrap:wrap;gap:8px;}
+.profit-chip{padding:4px 12px;border-radius:30px;font-size:11px;font-weight:700;}
+.profit-chip.pos{background:var(--green-100);color:var(--green-700);}
+.profit-chip.neg{background:var(--red-light);color:var(--red);}
+
+.modal{position:fixed;inset:0;background:rgba(10,20,15,0.55);backdrop-filter:blur(6px);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal.open{display:flex;}
+.modal-box{background:white;width:100%;max-width:760px;max-height:92vh;overflow-y:auto;border-radius:var(--radius-xl);animation:slideUp 0.22s ease;box-shadow:0 24px 60px rgba(0,0,0,0.25);}
+@keyframes slideUp{from{transform:translateY(28px) scale(0.97);opacity:0;}to{transform:translateY(0) scale(1);opacity:1;}}
+.modal-head{
+  padding:16px 20px;border-bottom:1px solid #f0f2f5;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:700;font-size:16px;
+  background:linear-gradient(135deg,var(--green-900),var(--green-700));
+  color:white;border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+  position:sticky;top:0;z-index:10;
+}
+.modal-close{background:rgba(255,255,255,0.15);border:none;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;color:white;transition:0.2s;display:flex;align-items:center;justify-content:center;}
+.modal-close:hover{background:rgba(255,255,255,0.3);transform:rotate(90deg);}
+.modal-body{padding:20px;}
+.modal-section{background:var(--gray-50);border-radius:var(--radius-md);padding:14px;margin-bottom:14px;border:1px solid #e5e7eb;}
+.modal-section-title{font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+
+.form-group{margin-bottom:13px;}
+.form-label{font-size:11px;font-weight:600;display:block;margin-bottom:5px;color:var(--gray-700);}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:10px 12px;
+  border:1.5px solid #e2e8f0;border-radius:10px;
+  font-size:13px;font-family:inherit;
+  background:white;color:var(--gray-900);
+  transition:0.2s;
+}
+.form-textarea{resize:vertical;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  outline:none;border-color:var(--green-700);
+  box-shadow:0 0 0 3px rgba(15,46,38,0.08);
+}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.row-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;}
+.row-5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+@media(max-width:500px){.row-3{grid-template-columns:1fr 1fr;}.row-4{grid-template-columns:1fr 1fr;}.row-5{grid-template-columns:1fr 1fr;}}
+
+.door-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:8px 0;}
+.door-item{
+  background:white;border:2px solid #e5e7eb;border-radius:var(--radius-md);
+  padding:10px 6px;text-align:center;cursor:pointer;transition:0.18s;
+}
+.door-item:hover{border-color:var(--gold);transform:scale(1.03);}
+.door-item.selected{border-color:var(--green-800);background:var(--green-50);}
+.door-item .di-icon{font-size:32px;display:block;margin-bottom:4px;}
+.door-item .di-name{font-size:10px;font-weight:700;color:var(--gray-700);}
+.door-item .di-desc{font-size:9px;color:var(--gray-500);margin-top:1px;}
+
+.template-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.tmpl-btn{
+  background:white;border:1.5px solid #e2e8f0;
+  padding:4px 12px;border-radius:20px;
+  font-size:10px;font-weight:600;cursor:pointer;
+  transition:0.15s;color:var(--gray-700);
+}
+.tmpl-btn:hover{background:var(--green-800);color:white;border-color:var(--green-800);}
+
+.door-row{
+  background:white;border-radius:var(--radius-md);
+  padding:12px;margin-bottom:10px;
+  border:1px solid #e5e7eb;
+}
+.door-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.door-row-label{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;}
+
+.cost-box{background:var(--green-50);border-radius:var(--radius-md);padding:14px;border:1px solid #bbf7d0;}
+.cost-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;}
+.cost-row.total{font-weight:700;font-size:14px;border-top:2px solid #86efac;padding-top:10px;margin-top:6px;}
+.cost-row.profit{font-weight:800;font-size:16px;color:var(--green-700);}
+.cost-row.loss{font-weight:800;font-size:16px;color:var(--red);}
+
+.pay-box{background:var(--blue-light);border-radius:var(--radius-md);padding:14px;border:1px solid #bfdbfe;margin-top:12px;}
+.pay-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;}
+
+.khata-card{
+  background:white;border-radius:var(--radius-lg);
+  padding:16px;margin-bottom:12px;
+  border:1px solid #e5e7eb;box-shadow:var(--shadow-sm);
+}
+.khata-balance{
+  padding:12px 16px;border-radius:var(--radius-md);
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:10px;
+}
+.khata-balance.cr{background:#d1fae5;border:1px solid #6ee7b7;}
+.khata-balance.dr{background:#fee2e2;border:1px solid #fca5a5;}
+
+.search-bar{position:relative;margin-bottom:14px;}
+.search-bar input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid #e2e8f0;border-radius:30px;font-size:13px;font-family:inherit;background:white;}
+.search-bar input:focus{outline:none;border-color:var(--green-700);box-shadow:0 0 0 3px rgba(15,46,38,0.08);}
+.search-bar .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+
+.toast{
+  position:fixed;bottom:84px;left:50%;
+  transform:translateX(-50%) translateY(16px);
+  background:var(--gray-900);color:white;
+  padding:11px 24px;border-radius:30px;
+  font-size:12px;font-weight:600;z-index:700;
+  opacity:0;transition:0.22s;pointer-events:none;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(12px);
+  border-top:1px solid #e5e7eb;
+  display:flex;justify-content:space-around;
+  padding:4px 8px 6px;z-index:300;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.06);
+}
+.nav-btn{
+  background:none;border:none;
+  display:flex;flex-direction:column;align-items:center;
+  font-size:9px;color:var(--gray-500);
+  cursor:pointer;padding:4px 8px;border-radius:10px;
+  transition:0.18s;font-weight:600;font-family:inherit;
+  letter-spacing:0.2px;
+}
+.nav-btn .n-icon{font-size:19px;margin-bottom:1px;}
+.nav-btn.active{color:var(--green-800);}
+.nav-btn.active .n-icon{filter:drop-shadow(0 2px 4px rgba(15,46,38,0.3));}
+
+.divider{border:none;border-top:1px solid #f0f2f5;margin:12px 0;}
+
+.empty-state{text-align:center;padding:40px 16px;color:var(--gray-500);}
+.empty-state .e-icon{font-size:44px;margin-bottom:8px;}
+.empty-state p{font-size:13px;}
+
+.report-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:var(--radius-sm);background:var(--gray-50);margin-bottom:6px;font-size:13px;border:1px solid #f0f2f5;flex-wrap:wrap;gap:8px;}
+.report-row:nth-child(even){background:white;}
+
+.del-btn{background:var(--red-light);color:var(--red);border:none;padding:4px 10px;border-radius:30px;font-size:10px;font-weight:700;cursor:pointer;transition:0.15s;}
+.del-btn:hover{background:#fecaca;}
+
+.quick-actions{display:flex;flex-wrap:wrap;gap:10px;}
+
+.toggle-row{display:flex;align-items:center;gap:8px;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 12px;}
+.toggle-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--green-800);cursor:pointer;}
+.toggle-row label{font-size:11px;font-weight:600;color:var(--gray-700);cursor:pointer;margin:0;}
+
+/* ── PRINT ── */
+@media print{
+  .bottom-nav,.header,.no-print{display:none!important;}
+  body{background:white;padding:0;}
+  .print-area{padding:20px;}
+  .print-area .bill-table{page-break-inside:avoid;}
+  .print-area .bill-header{page-break-after:avoid;}
+  .print-area .bill-footer{page-break-before:avoid;}
+}
+
+/* ── WOOD USED HIGHLIGHT ── */
+.wood-used-highlight {
+  background: #fef3c7 !important;
+  border-color: #f59e0b !important;
+}
+.wood-used-highlight:focus {
+  border-color: #d97706 !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
+}
+.wood-auto-badge{
+  display:inline-flex;align-items:center;gap:3px;
+  background:#dbeafe;color:#1e40af;
+  font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;
+  margin-left:6px;
+}
+.wood-manual-badge{
+  display:inline-flex;align-items:center;gap:3px;
+  background:#fef3c7;color:#92400e;
+  font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;
+  margin-left:6px;
+}
+
+/* ── WOOD BREAKDOWN TABLE ── */
+.wood-summary-row{display:flex;justify-content:space-between;padding:8px 10px;border-radius:8px;background:white;margin-bottom:6px;border:1px solid #e5e7eb;font-size:12px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">🚪</div>
+      <div class="logo-text">
+        <h1>HK WOOD DOORS</h1>
+        <p>Complete ERP System</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="hdr-btn" onclick="exportBackup()">💾 Backup</button>
+      <label class="hdr-btn" style="cursor:pointer;margin:0;">📂 Restore<input type="file" id="restoreFileInput" accept=".json" style="display:none;" onchange="importBackup(event)"></label>
+      <button class="hdr-btn" onclick="openWoodModal()">🪵 Wood Rates</button>
+      <button class="hdr-btn gold" onclick="openOrderModal()">+ New Order</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tab-bar" style="margin-top:14px;">
+    <button class="tab-pill active" data-tab="tabHome"><span class="t-icon">🏠</span>Home</button>
+    <button class="tab-pill" data-tab="tabOrders"><span class="t-icon">📋</span>Orders</button>
+    <button class="tab-pill" data-tab="tabLabour"><span class="t-icon">👷</span>Labour</button>
+    <button class="tab-pill" data-tab="tabKhata"><span class="t-icon">📒</span>Khata</button>
+    <button class="tab-pill" data-tab="tabParties"><span class="t-icon">👥</span>Parties</button>
+  </div>
+
+  <div id="tabHome" class="tab active">
+    <div class="stats" id="statsArea"></div>
+    <div class="card">
+      <div class="card-head"><span class="section-title">⚡ Quick Actions</span></div>
+      <div class="card-body">
+        <div class="quick-actions">
+          <button class="btn btn-primary" onclick="openOrderModal()">📋 New Order</button>
+          <button class="btn btn-outline" onclick="openPartyModal()">👤 Add Party</button>
+          <button class="btn btn-outline" onclick="openLabourModal()">👷 Assign Labour</button>
+          <button class="btn btn-gold" onclick="switchTab('tabKhata')">📒 Khata</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span class="section-title">🪵 Wood Usage Summary</span>
+      </div>
+      <div class="card-body" id="woodSummary"></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span class="section-title">📌 Recent Orders</span>
+        <button class="btn btn-outline btn-sm" onclick="switchTab('tabOrders')">View All →</button>
+      </div>
+      <div class="card-body" id="recentOrders"></div>
+    </div>
+  </div>
+
+  <div id="tabOrders" class="tab">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span style="font-size:16px;font-weight:700;">📋 All Orders</span>
+      <button class="btn btn-primary btn-sm" onclick="openOrderModal()">+ New Order</button>
+    </div>
+    <div class="search-bar">
+      <span class="s-icon">🔍</span>
+      <input type="text" id="orderSearch" placeholder="Search by party, order no..." oninput="renderOrders()">
+    </div>
+    <div id="ordersList"></div>
+  </div>
+
+  <div id="tabLabour" class="tab">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span style="font-size:16px;font-weight:700;">👷 Labour Records</span>
+      <button class="btn btn-primary btn-sm" onclick="openLabourModal()">+ Assign</button>
+    </div>
+    <div id="labourList"></div>
+  </div>
+
+  <div id="tabKhata" class="tab">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span style="font-size:16px;font-weight:700;">📒 Party Khata</span>
+      <select class="form-select" id="khataPartyFilter" onchange="renderKhata()" style="width:auto;font-size:12px;padding:7px 12px;">
+        <option value="">-- All Parties --</option>
+      </select>
+    </div>
+    <div id="khataContent"></div>
+  </div>
+
+  <div id="tabParties" class="tab">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span style="font-size:16px;font-weight:700;">👥 Parties</span>
+      <button class="btn btn-primary btn-sm" onclick="openPartyModal()">+ Add Party</button>
+    </div>
+    <div id="partiesList"></div>
+  </div>
+</div>
+
+<div class="toast" id="toastMsg"></div>
+
+<!-- PARTY MODAL -->
+<div class="modal" id="partyModal">
+  <div class="modal-box">
+    <div class="modal-head">👤 Add Party <button class="modal-close" onclick="closeModal('partyModal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="partyName" placeholder="e.g., Ali Builders"></div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" id="partyPhone" placeholder="03xx-xxxxxxx"></div>
+        <div class="form-group"><label class="form-label">City / Area</label><input class="form-input" id="partyAddress" placeholder="e.g., Lahore, Gulberg"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Opening Balance / Purana Baqaya (Rs.)</label>
+        <input class="form-input" type="number" id="partyOpeningBalance" placeholder="0" value="0">
+        <div style="font-size:10px;color:var(--gray-500);margin-top:4px;">Agar party pehle se kuch udhaar hai, yahan likhein.</div>
+      </div>
+      <div class="form-group"><label class="form-label">Notes (optional)</label><textarea class="form-input form-textarea" id="partyNotes" rows="2" placeholder="Any relevant details..."></textarea></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn btn-outline" onclick="closeModal('partyModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveParty()">💾 Save Party</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WOOD MODAL -->
+<div class="modal" id="woodModal">
+  <div class="modal-box" style="max-width:600px;">
+    <div class="modal-head">🪵 Wood Types & Rates <button class="modal-close" onclick="closeModal('woodModal')">✕</button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray-500);margin-bottom:12px;">Yahan wood ka naam aur rate per <strong>cft (cubic feet)</strong> update karein.</p>
+      <div id="woodRatesList"></div>
+      <button class="btn btn-outline btn-sm" onclick="addWoodType()" style="margin-top:4px;">+ Add Wood Type</button>
+      
+      <hr class="divider" style="margin:16px 0;">
+      
+      <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);padding:14px;border-radius:var(--radius-md);border:2px solid #3b82f6;margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;color:#1e40af;">📐 Default Wood Thickness (Auto-Calculate ke liye)</div>
+        <div class="row-2" style="align-items:center;">
+          <input class="form-input" type="number" step="0.125" id="defaultThickness" placeholder="e.g., 1.5" style="background:white;">
+          <span style="font-size:11px;color:#1e40af;">inch (door ki standard mota'i)</span>
+        </div>
+        <div style="font-size:11px;color:#1e40af;margin-top:6px;">Order form mein cft khud-ba-khud is thickness se calculate ho jayega — chahein to har door pe alag se edit bhi kar sakte hain.</div>
+      </div>
+      
+      <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);padding:14px;border-radius:var(--radius-md);border:2px solid #f59e0b;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#92400e;">✋ Manual Override</div>
+        <div style="font-size:12px;color:#78350f;">Kisi bhi door pe agar exact wood cft pata ho, "Manual" mode mein switch karke seedha likh sakte hain.</div>
+      </div>
+      
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;">
+        <button class="btn btn-outline" onclick="closeModal('woodModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveWoodRates()">💾 Save Rates</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal" id="orderModal">
+  <div class="modal-box">
+    <div class="modal-head" id="orderModalTitle">📋 New Order <button class="modal-close" onclick="closeModal('orderModal')">✕</button></div>
+    <div class="modal-body" id="orderModalBody"></div>
+  </div>
+</div>
+
+<!-- LABOUR MODAL -->
+<div class="modal" id="labourModal">
+  <div class="modal-box">
+    <div class="modal-head">👷 Labour Assignment <button class="modal-close" onclick="closeModal('labourModal')">✕</button></div>
+    <div class="modal-body" id="labourModalBody"></div>
+  </div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal" id="orderDetailModal">
+  <div class="modal-box">
+    <div class="modal-head">📊 Order Details <button class="modal-close" onclick="closeModal('orderDetailModal')">✕</button></div>
+    <div class="modal-body" id="orderDetailContent"></div>
+  </div>
+</div>
+
+<!-- BILL MODAL -->
+<div class="modal" id="billModal">
+  <div class="modal-box" style="max-width:600px;">
+    <div class="modal-head">🖨️ Bill / Invoice <button class="modal-close" onclick="closeModal('billModal')">✕</button></div>
+    <div class="modal-body">
+      <div id="billContent"></div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px;" class="no-print">
+        <button class="btn btn-outline" onclick="closeModal('billModal')">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print Bill</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-head">💵 Receive Payment <button class="modal-close" onclick="closeModal('paymentModal')">✕</button></div>
+    <div class="modal-body" id="paymentModalBody"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// DATA & STATE
+// ═══════════════════════════════════════════════════
+const DOOR_GALLERY = [
+  {id:'d1',name:'Classic Panel',icon:'🚪',desc:'6-Panel Traditional'},
+  {id:'d2',name:'Modern Flush',icon:'🚪',desc:'Smooth Flat Surface'},
+  {id:'d3',name:'Glass Panel',icon:'🪟',desc:'With Glass Insert'},
+  {id:'d4',name:'French Door',icon:'🚪',desc:'Double Door Style'},
+  {id:'d5',name:'Barn Door',icon:'🚪',desc:'Sliding Rustic'},
+  {id:'d6',name:'Louvered',icon:'🚪',desc:'Ventilated Design'},
+  {id:'d7',name:'Arch Top',icon:'🚪',desc:'Arched Entrance'},
+  {id:'d8',name:'Flush Glazed',icon:'🪟',desc:'Full Glass Panel'}
+];
+
+const DOOR_TEMPLATES = ["45x80","39x80","33x80","27x80","51x80","57x80","42x80","48x80","45x78","42x78","39x78","33x78","27x78","27x75"];
+
+let woodTypes = [
+  {id:1,name:"Pertal Wood",rate:340},
+  {id:2,name:"German Kail",rate:280},
+  {id:3,name:"Indian Kail",rate:220}
+];
+let defaultThickness = 1.5; // inch
+let parties=[], orders=[], labours=[];
+let nextId=100;
+let orderCounter=0; // permanent, never reused even after delete
+let currentOrderDoors=[], currentLabourDoors=[];
+let editingOrderId=null, editingLabourId=null, selectedGalleryDoor=null;
+
+// ═══════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════
+const showToast=msg=>{let t=document.getElementById("toastMsg");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400);};
+const closeModal=id=>document.getElementById(id).classList.remove("open");
+const openModal=id=>document.getElementById(id).classList.add("open");
+const esc=s=>{if(!s)return"";return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));};
+const getPartyName=id=>{let p=parties.find(p=>p.id==id);return p?p.name:"Unknown";};
+const getPartyById=id=>parties.find(p=>p.id==id);
+const calcSqft=(w,h)=>(w*h)/144;
+const getWoodName=id=>{let w=woodTypes.find(w=>w.id==id);return w?w.name:"Custom";};
+const getWoodRate=id=>{let w=woodTypes.find(w=>w.id==id);return w?w.rate:0;};
+const fmtRs=n=>`Rs.${Math.round(n).toLocaleString()}`;
+
+// ═══════════════════════════════════════════════════
+// WOOD CALCULATION — AUTO (formula) + MANUAL OVERRIDE
+// ═══════════════════════════════════════════════════
+// Auto formula: cft = (Width(in) × Height(in) × Thickness(in)) / 1728
+function calcAutoCft(w,h,thickness){
+  return (w*h*(thickness||defaultThickness))/1728;
+}
+function getDoorCft(d){
+  // If manual mode and manual value entered, use it. Otherwise auto-calculate.
+  if(d.cftMode==='manual'){
+    return d.woodCft||0;
+  }
+  return calcAutoCft(d.w,d.h,d.thickness||defaultThickness);
+}
+function getDoorWoodCost(d){
+  let cft=getDoorCft(d);
+  let rate=getWoodRate(d.woodId);
+  return cft*rate;
+}
+
+// ═══════════════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════════════
+function saveAll(){
+  localStorage.setItem("ww_parties",JSON.stringify(parties));
+  localStorage.setItem("ww_orders",JSON.stringify(orders));
+  localStorage.setItem("ww_labours",JSON.stringify(labours));
+  localStorage.setItem("ww_wood",JSON.stringify(woodTypes));
+  localStorage.setItem("ww_thickness",defaultThickness);
+  localStorage.setItem("ww_nextId",nextId);
+  localStorage.setItem("ww_orderCounter",orderCounter);
+}
+function loadData(){
+  try{
+    if(localStorage.getItem("ww_parties")) parties=JSON.parse(localStorage.getItem("ww_parties"));
+    if(localStorage.getItem("ww_orders"))  orders=JSON.parse(localStorage.getItem("ww_orders"));
+    if(localStorage.getItem("ww_labours")) labours=JSON.parse(localStorage.getItem("ww_labours"));
+    if(localStorage.getItem("ww_wood"))    woodTypes=JSON.parse(localStorage.getItem("ww_wood"));
+    if(localStorage.getItem("ww_thickness")) defaultThickness=parseFloat(localStorage.getItem("ww_thickness"))||1.5;
+    if(localStorage.getItem("ww_nextId"))  nextId=parseInt(localStorage.getItem("ww_nextId"))||100;
+    if(localStorage.getItem("ww_orderCounter")) orderCounter=parseInt(localStorage.getItem("ww_orderCounter"))||0;
+    else {
+      // Migration: derive counter from existing order numbers so it never collides
+      let maxNo=0;
+      orders.forEach(o=>{
+        let m=(o.orderNo||"").match(/(\d+)$/);
+        if(m) maxNo=Math.max(maxNo,parseInt(m[1]));
+      });
+      orderCounter=maxNo;
+    }
+  }catch(e){}
+}
+
+// ═══════════════════════════════════════════════════
+// BACKUP / RESTORE
+// ═══════════════════════════════════════════════════
+function exportBackup(){
+  let backup={
+    app:"HK Wood Doors ERP",
+    version:1,
+    exportedAt:new Date().toISOString(),
+    parties,orders,labours,woodTypes,defaultThickness,nextId
+  };
+  let blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+  let url=URL.createObjectURL(blob);
+  let a=document.createElement("a");
+  let dateStr=new Date().toISOString().slice(0,10);
+  a.href=url;
+  a.download=`waqas-wood-doors-backup-${dateStr}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast("✅ Backup file download ho gayi!");
+}
+
+function importBackup(event){
+  let file=event.target.files[0];
+  if(!file)return;
+  if(!confirm("⚠️ Yeh aapka MAUJOODA data overwrite kar dega is backup file se. Aage badhein?")){
+    event.target.value="";
+    return;
+  }
+  let reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      let data=JSON.parse(e.target.result);
+      if(!data.orders && !data.parties){
+        showToast("⚠️ Yeh valid backup file nahi hai");
+        return;
+      }
+      parties=data.parties||[];
+      orders=data.orders||[];
+      labours=data.labours||[];
+      woodTypes=data.woodTypes||woodTypes;
+      defaultThickness=data.defaultThickness||1.5;
+      nextId=data.nextId||100;
+      saveAll();
+      updateKhataFilter();
+      renderDashboard();renderOrders();renderLabourList();renderParties();renderKhata();
+      showToast("✅ Data restore ho gaya!");
+    }catch(err){
+      showToast("⚠️ File parhne mein masla hua, sahi backup file chunein");
+    }
+    event.target.value="";
+  };
+  reader.readAsText(file);
+}
+
+// ═══════════════════════════════════════════════════
+// WOOD
+// ═══════════════════════════════════════════════════
+function openWoodModal(){renderWoodList();document.getElementById("defaultThickness").value=defaultThickness;openModal("woodModal");}
+function renderWoodList(){
+  document.getElementById("woodRatesList").innerHTML=woodTypes.map(w=>`
+    <div style="display:flex;gap:10px;margin-bottom:8px;align-items:center;">
+      <input class="form-input" value="${esc(w.name)}" id="wn_${w.id}" placeholder="Wood name" style="flex:2">
+      <input class="form-input" type="number" value="${w.rate}" id="wr_${w.id}" placeholder="Rate/cft" style="flex:1">
+      <button class="del-btn" onclick="removeWood(${w.id})">✕</button>
+    </div>`).join("");
+}
+function addWoodType(){woodTypes.push({id:Date.now(),name:"New Wood",rate:200});renderWoodList();}
+function removeWood(id){woodTypes=woodTypes.filter(w=>w.id!=id);renderWoodList();}
+function saveWoodRates(){
+  woodTypes.forEach(w=>{
+    let n=document.getElementById(`wn_${w.id}`),r=document.getElementById(`wr_${w.id}`);
+    if(n)w.name=n.value;if(r)w.rate=parseFloat(r.value)||0;
+  });
+  defaultThickness=parseFloat(document.getElementById("defaultThickness").value)||1.5;
+  saveAll();closeModal("woodModal");showToast("✅ Wood rates saved!");
+}
+
+// ═══════════════════════════════════════════════════
+// PARTY
+// ═══════════════════════════════════════════════════
+let editingPartyId=null;
+function openPartyModal(party=null){
+  editingPartyId=party?.id||null;
+  document.getElementById("partyName").value=party?.name||"";
+  document.getElementById("partyPhone").value=party?.phone||"";
+  document.getElementById("partyAddress").value=party?.address||"";
+  document.getElementById("partyOpeningBalance").value=party?.openingBalance||0;
+  document.getElementById("partyNotes").value=party?.notes||"";
+  document.querySelector("#partyModal .modal-head").innerHTML=`👤 ${party?"Edit":"Add"} Party <button class="modal-close" onclick="closeModal('partyModal')">✕</button>`;
+  openModal("partyModal");
+}
+function saveParty(){
+  let name=document.getElementById("partyName").value.trim();
+  if(!name){showToast("⚠️ Name required");return;}
+  let openingBalance=parseFloat(document.getElementById("partyOpeningBalance").value)||0;
+  if(editingPartyId){
+    let p=parties.find(p=>p.id===editingPartyId);
+    if(p){
+      p.name=name;
+      p.phone=document.getElementById("partyPhone").value;
+      p.address=document.getElementById("partyAddress").value;
+      p.openingBalance=openingBalance;
+      p.notes=document.getElementById("partyNotes").value;
+    }
+  }else{
+    parties.push({
+      id:++nextId,name,
+      phone:document.getElementById("partyPhone").value,
+      address:document.getElementById("partyAddress").value,
+      openingBalance,
+      notes:document.getElementById("partyNotes").value,
+      createdAt:new Date().toISOString().slice(0,10)
+    });
+  }
+  saveAll();closeModal("partyModal");renderParties();renderDashboard();updateKhataFilter();renderKhata();showToast(`✅ Party ${editingPartyId?"updated":"added"}!`);
+}
+function deleteParty(id){
+  if(!confirm("Delete this party?"))return;
+  parties=parties.filter(p=>p.id!=id);
+  saveAll();renderParties();renderDashboard();
+}
+function renderParties(){
+  let html=parties.map(p=>{
+    let pOrders=orders.filter(o=>o.partyId==p.id);
+    let totalBill=pOrders.reduce((s,o)=>s+(o.orderTotal||0),0);
+    let totalPaid=pOrders.reduce((s,o)=>s+(o.advancePayment||0),0);
+    let opening=p.openingBalance||0;
+    let remaining=(totalBill+opening)-totalPaid;
+    return `<div class="order-card">
+      <div class="order-card-top">
+        <div>
+          <div style="font-size:15px;font-weight:700;">👤 ${esc(p.name)}</div>
+          <div class="item-sub">📞 ${p.phone||"—"} · 📍 ${p.address||"—"}</div>
+          <div class="item-sub">📋 ${pOrders.length} orders · Total Bill: ${fmtRs(totalBill)}${opening?` · Opening: ${fmtRs(opening)}`:""}</div>
+        </div>
+        <button class="del-btn" onclick="deleteParty(${p.id})">🗑 Del</button>
+      </div>
+      <div class="order-footer">
+        <div>
+          <span style="font-size:11px;color:var(--gray-500);">Paid: <strong>${fmtRs(totalPaid)}</strong></span>
+          <span style="font-size:11px;color:${remaining>0?'var(--red)':'var(--green-700)'};margin-left:12px;">Baqi: <strong>${fmtRs(remaining)}</strong></span>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-outline btn-xs" onclick='openPartyModal(${JSON.stringify(p).replace(/'/g,"&apos;")})'>✏️ Edit</button>
+          <button class="btn btn-outline btn-xs" onclick="showPartyKhata(${p.id})">📒 Khata</button>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+  document.getElementById("partiesList").innerHTML=html||`<div class="empty-state"><div class="e-icon">👥</div><p>No parties added yet</p></div>`;
+}
+
+// ═══════════════════════════════════════════════════
+// DOOR GALLERY
+// ═══════════════════════════════════════════════════
+function renderDoorGalleryHtml(){
+  return `<div class="door-gallery">${DOOR_GALLERY.map(d=>`
+    <div class="door-item" onclick="selectGalleryDoor('${d.id}')" id="gallery_${d.id}">
+      <span class="di-icon">${d.icon}</span>
+      <div class="di-name">${d.name}</div>
+      <div class="di-desc">${d.desc}</div>
+    </div>`).join("")}</div>`;
+}
+function selectGalleryDoor(id){
+  DOOR_GALLERY.forEach(d=>{let el=document.getElementById(`gallery_${d.id}`);if(el)el.classList.remove("selected");});
+  let el=document.getElementById(`gallery_${id}`);if(el)el.classList.add("selected");
+  selectedGalleryDoor=id;
+  let d=DOOR_GALLERY.find(d=>d.id==id);if(d)showToast(`Design: ${d.name}`);
+}
+
+// ═══════════════════════════════════════════════════
+// ORDER
+// ═══════════════════════════════════════════════════
+function getPartyOpts(selected=""){
+  return "<option value=''>-- Select Party --</option>"+
+    parties.map(p=>`<option value="${p.id}" ${p.id==selected?"selected":""}>${esc(p.name)}</option>`).join("");
+}
+function getWoodOpts(selected){
+  return woodTypes.map(w=>`<option value="${w.id}" ${w.id==selected?"selected":""}>${esc(w.name)} — ${fmtRs(w.rate)}/cft</option>`).join("");
+}
+
+function renderOrderModalBody(order=null){
+  let today=new Date().toISOString().slice(0,10);
+  document.getElementById("orderModalBody").innerHTML=`
+    <div class="modal-section">
+      <div class="modal-section-title">🏢 Party & Order Info</div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Party *</label><select class="form-select" id="orderParty">${getPartyOpts(order?.partyId)}</select></div>
+        <div class="form-group"><label class="form-label">Site Address</label><input class="form-input" id="orderAddress" placeholder="Site / City" value="${esc(order?.address||"")}"></div>
+      </div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Order Date</label><input type="date" class="form-input" id="orderDate" value="${order?.date||today}"></div>
+        <div class="form-group"><label class="form-label">Delivery Date</label><input type="date" class="form-input" id="orderDeliveryDate" value="${order?.deliveryDate||""}"></div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">🎨 Door Design</div>
+      ${renderDoorGalleryHtml()}
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">📐 Size Templates — Quick Add</div>
+      <div class="template-grid">${DOOR_TEMPLATES.map(t=>`<button class="tmpl-btn" onclick="applyOrderTemplate('${t}')">${t}</button>`).join("")}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">🚪 Door List <span style="font-weight:400;text-transform:none;letter-spacing:0;">— wood cft auto-calculate hoga (W×H×Thickness), chahein to manual mein switch karein</span></div>
+      <div id="orderDoorsContainer"></div>
+      <button class="btn btn-outline btn-sm" onclick="addOrderDoor()" style="margin-top:6px;">+ Add Door</button>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">💰 Payment</div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Advance Received (Rs.)</label><input type="number" class="form-input" id="advancePayment" value="${order?.advancePayment||0}" oninput="calcOrderSummary()"></div>
+        <div class="form-group"><label class="form-label">Payment Status (Auto)</label>
+          <input class="form-input" id="paymentStatusDisplay" readonly style="background:#e2e8f0;font-weight:700;">
+        </div>
+      </div>
+      <div id="orderPaymentSummary"></div>
+    </div>
+
+    <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input form-textarea" id="orderNotes" rows="2">${esc(order?.notes||"")}</textarea></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-outline" onclick="closeModal('orderModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveOrder()">💾 Save Order</button>
+    </div>
+  `;
+  renderOrderDoorsUI();
+  calcOrderSummary();
+}
+
+function applyOrderTemplate(tmpl){
+  let [w,h]=tmpl.split("x").map(Number);
+  let doorName=selectedGalleryDoor?DOOR_GALLERY.find(d=>d.id==selectedGalleryDoor)?.name||"Door":"Door";
+  currentOrderDoors.push({
+    id:Date.now()+Math.random(),
+    name:`${doorName} (${tmpl})`,
+    galleryId:selectedGalleryDoor||null,
+    woodId:woodTypes[0]?.id||1,
+    rate:null,
+    w,h,qty:1,
+    cftMode:'auto',
+    thickness:defaultThickness,
+    woodCft:0
+  });
+  renderOrderDoorsUI();calcOrderSummary();showToast(`✅ ${tmpl} added`);
+}
+function addOrderDoor(){
+  let doorName=selectedGalleryDoor?DOOR_GALLERY.find(d=>d.id==selectedGalleryDoor)?.name||"Door":"Custom Door";
+  currentOrderDoors.push({
+    id:Date.now()+Math.random(),
+    name:doorName,
+    galleryId:selectedGalleryDoor||null,
+    woodId:woodTypes[0]?.id||1,
+    rate:null,
+    w:0,h:0,qty:1,
+    cftMode:'auto',
+    thickness:defaultThickness,
+    woodCft:0
+  });
+  renderOrderDoorsUI();
+}
+function removeOrderDoor(id){currentOrderDoors=currentOrderDoors.filter(d=>d.id!=id);renderOrderDoorsUI();calcOrderSummary();}
+function updateOrderDoor(id,key,val){
+  let d=currentOrderDoors.find(d=>d.id==id);
+  if(d){
+    if(['w','h','qty','thickness'].includes(key))d[key]=parseFloat(val)||0;
+    else if(key==='rate')d.rate=parseFloat(val)||null;
+    else if(key==='woodId')d[key]=parseInt(val);
+    else if(key==='woodCft')d[key]=parseFloat(val)||0;
+    else d[key]=val;
+  }
+  if(['w','h','qty','rate','woodId','woodCft','thickness','cftMode'].includes(key)){renderOrderDoorsUI();calcOrderSummary();}
+}
+function toggleCftMode(id){
+  let d=currentOrderDoors.find(d=>d.id==id);
+  if(d){
+    d.cftMode = d.cftMode==='manual' ? 'auto' : 'manual';
+    if(d.cftMode==='manual' && !d.woodCft){
+      d.woodCft = calcAutoCft(d.w,d.h,d.thickness||defaultThickness); // prefill with auto value
+    }
+  }
+  renderOrderDoorsUI();calcOrderSummary();
+}
+
+function getDoorRate(d){return(d.rate&&d.rate>0)?d.rate:0;}
+function calcOrderTotal(){return currentOrderDoors.reduce((s,d)=>s+(calcSqft(d.w,d.h)*getDoorRate(d)*d.qty),0);}
+function calcOrderWoodCost(){return currentOrderDoors.reduce((s,d)=>s+(getDoorWoodCost(d)*d.qty),0);}
+function calcOrderWoodCft(){return currentOrderDoors.reduce((s,d)=>s+(getDoorCft(d)*d.qty),0);}
+
+function calcOrderSummary(){
+  let total=calcOrderTotal();
+  let woodCost=calcOrderWoodCost();
+  let woodCft=calcOrderWoodCft();
+  let adv=parseFloat(document.getElementById("advancePayment")?.value)||0;
+  let rem=total-adv;
+  let netProfit=total-woodCost;
+  let autoStatus = adv<=0 ? "Unpaid ❌" : (adv>=total && total>0 ? "Paid ✅" : "Partial ⏳");
+  let statusEl=document.getElementById("paymentStatusDisplay");
+  if(statusEl) statusEl.value=autoStatus;
+  let el=document.getElementById("orderPaymentSummary");
+  if(el)el.innerHTML=`<div class="pay-box">
+    <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:8px;padding:10px;margin-bottom:10px;border:1px solid #f59e0b;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px;">
+        <div><span style="color:#92400e;">🪵 Total Wood Used:</span> <strong style="color:#78350f;">${woodCft.toFixed(3)} cft</strong></div>
+        <div><span style="color:#92400e;">💰 Wood Cost:</span> <strong style="color:#78350f;">${fmtRs(woodCost)}</strong></div>
+      </div>
+    </div>
+    <div class="pay-row"><span>Total Amount (Sell Price):</span><strong>${fmtRs(total)}</strong></div>
+    <div class="pay-row"><span>Wood Cost:</span><strong style="color:#92400e;">- ${fmtRs(woodCost)}</strong></div>
+    <div class="pay-row" style="font-weight:700;border-top:1px dashed #bfdbfe;padding-top:6px;"><span>Gross Margin:</span><strong style="color:${netProfit>=0?'var(--green-700)':'var(--red)'}">${fmtRs(netProfit)}</strong></div>
+    <div class="pay-row" style="margin-top:8px;"><span>Advance Paid:</span><strong style="color:var(--green-600)">${fmtRs(adv)}</strong></div>
+    <div class="pay-row" style="font-weight:700;font-size:14px;margin-top:6px;padding-top:6px;border-top:1px solid #bfdbfe;">
+      <span>Remaining:</span>
+      <strong style="color:${rem>0?'var(--red)':'var(--green-700)'}">${fmtRs(rem)}</strong>
+    </div>
+  </div>`;
+}
+
+function renderOrderDoorsUI(){
+  let container=document.getElementById("orderDoorsContainer");if(!container)return;
+  container.innerHTML=currentOrderDoors.map((d,i)=>{
+    let sq=calcSqft(d.w,d.h),rate=getDoorRate(d),cost=sq*rate*d.qty;
+    let isManual = d.cftMode==='manual';
+    let cft = getDoorCft(d);
+    let woodCost=getDoorWoodCost(d)*d.qty;
+    let gIcon=d.galleryId?DOOR_GALLERY.find(g=>g.id==d.galleryId)?.icon||'🚪':'🚪';
+    return `<div class="door-row">
+      <div class="door-row-head">
+        <div class="door-row-label">${gIcon} Door ${i+1} ${d.name?'— '+esc(d.name):''}</div>
+        <button class="del-btn" onclick="removeOrderDoor(${d.id})">Remove</button>
+      </div>
+      <div class="row-3" style="margin-bottom:8px;">
+        <div><label class="form-label">Name</label><input class="form-input" placeholder="Door name" value="${esc(d.name)}" onchange="updateOrderDoor(${d.id},'name',this.value)"></div>
+        <div><label class="form-label">Width (inch)</label><input class="form-input" type="number" placeholder='W"' value="${d.w||''}" onchange="updateOrderDoor(${d.id},'w',this.value)"></div>
+        <div><label class="form-label">Height (inch)</label><input class="form-input" type="number" placeholder='H"' value="${d.h||''}" onchange="updateOrderDoor(${d.id},'h',this.value)"></div>
+      </div>
+      <div class="row-4" style="margin-bottom:8px;">
+        <div><label class="form-label">Qty</label><input class="form-input" type="number" value="${d.qty}" onchange="updateOrderDoor(${d.id},'qty',this.value)"></div>
+        <div><label class="form-label">Wood Type</label><select class="form-select" onchange="updateOrderDoor(${d.id},'woodId',this.value)">${getWoodOpts(d.woodId)}</select></div>
+        <div><label class="form-label">Sell Rate/sqft</label><input class="form-input" type="number" placeholder="Rs/sqft" value="${d.rate||''}" onchange="updateOrderDoor(${d.id},'rate',this.value)"></div>
+        <div><label class="form-label">Thickness (inch)</label><input class="form-input" type="number" step="0.125" value="${d.thickness||defaultThickness}" onchange="updateOrderDoor(${d.id},'thickness',this.value)" ${isManual?'disabled style="opacity:0.5;"':''}></div>
+      </div>
+      <div class="toggle-row" style="margin-bottom:8px;">
+        <input type="checkbox" id="cftmode_${d.id}" ${isManual?'checked':''} onchange="toggleCftMode(${d.id})">
+        <label for="cftmode_${d.id}">✋ Manual Wood Entry (cft khud likhna hai)</label>
+        ${isManual?'<span class="wood-manual-badge">MANUAL</span>':'<span class="wood-auto-badge">AUTO-CALC</span>'}
+      </div>
+      ${isManual?`<div class="form-group" style="margin-bottom:8px;">
+        <label class="form-label" style="color:#92400e;font-weight:700;">🪵 Wood Used (cft) — per door</label>
+        <input class="form-input wood-used-highlight" type="number" step="0.001" placeholder="e.g., 4.514" value="${d.woodCft||''}" onchange="updateOrderDoor(${d.id},'woodCft',this.value)">
+      </div>`:''}
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:8px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:8px;padding:8px;">
+        <div style="text-align:center;">
+          <div style="font-size:9px;color:var(--gray-500);">📐 Area</div>
+          <div style="font-weight:700;font-size:13px;">${sq.toFixed(2)} sqft</div>
+        </div>
+        <div style="text-align:center;background:#fef3c7;border-radius:6px;padding:4px;">
+          <div style="font-size:9px;color:#92400e;">🪵 cft/door</div>
+          <div style="font-weight:700;font-size:13px;color:#78350f;">${cft.toFixed(3)}</div>
+        </div>
+        <div style="text-align:center;background:#fef3c7;border-radius:6px;padding:4px;">
+          <div style="font-size:9px;color:#92400e;">🪵 Total cft</div>
+          <div style="font-weight:700;font-size:13px;color:#78350f;">${(cft*d.qty).toFixed(3)}</div>
+        </div>
+        <div style="text-align:center;background:#fef3c7;border-radius:6px;padding:4px;">
+          <div style="font-size:9px;color:#92400e;">💰 Wood Cost</div>
+          <div style="font-weight:700;font-size:13px;color:#78350f;">${fmtRs(woodCost)}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("")||`<div class="empty-state" style="padding:20px;"><p>No doors. Select design from gallery above or click Add Door.</p></div>`;
+}
+
+function openOrderModal(order=null){
+  editingOrderId=null;currentOrderDoors=[];selectedGalleryDoor=null;
+  document.getElementById("orderModalTitle").innerHTML=`${order?'✏️ Edit':'📋 New'} Order <button class="modal-close" onclick="closeModal('orderModal')">✕</button>`;
+  if(order){
+    editingOrderId=order.id;
+    currentOrderDoors=JSON.parse(JSON.stringify(order.doors||[])).map(d=>({...d,cftMode:d.cftMode||'auto',thickness:d.thickness||defaultThickness}));
+  }else{
+    currentOrderDoors.push({
+      id:Date.now(),
+      name:"",
+      galleryId:null,
+      woodId:woodTypes[0]?.id||1,
+      rate:null,
+      w:0,h:0,qty:1,
+      cftMode:'auto',
+      thickness:defaultThickness,
+      woodCft:0
+    });
+  }
+  renderOrderModalBody(order);
+  openModal("orderModal");
+}
+
+function saveOrder(){
+  let pid=document.getElementById("orderParty").value;
+  if(!pid){showToast("⚠️ Select a party first");return;}
+  let validDoors=currentOrderDoors.filter(d=>d.w>0&&d.h>0);
+  if(!validDoors.length){showToast("⚠️ Add at least one door");return;}
+  let total=calcOrderTotal();
+  let woodCost=calcOrderWoodCost();
+  let woodCft=calcOrderWoodCft();
+  let adv=parseFloat(document.getElementById("advancePayment").value)||0;
+  // Payment status auto-calculated from advance amount — no manual guessing
+  let status = adv<=0 ? "unpaid" : (adv>=total ? "paid" : "partial");
+
+  let existingOrder = editingOrderId ? orders.find(o=>o.id===editingOrderId) : null;
+  let orderNo = existingOrder ? existingOrder.orderNo : "ORD-"+String(++orderCounter).padStart(3,"0");
+
+  let order={
+    id:editingOrderId||++nextId,
+    partyId:parseInt(pid),
+    date:document.getElementById("orderDate").value,
+    deliveryDate:document.getElementById("orderDeliveryDate").value,
+    address:document.getElementById("orderAddress").value,
+    notes:document.getElementById("orderNotes").value,
+    doors:validDoors,
+    advancePayment:adv,
+    paymentStatus:status,
+    orderTotal:total,
+    woodCost:woodCost,
+    woodCft:woodCft,
+    profit:total-woodCost,
+    status:status==="paid"?"completed":"pending",
+    orderNo:orderNo,
+    createdAt:existingOrder?existingOrder.createdAt:new Date().toISOString()
+  };
+  if(editingOrderId){orders=orders.map(o=>o.id===editingOrderId?order:o);}
+  else orders.unshift(order);
+  saveAll();closeModal("orderModal");renderOrders();renderDashboard();showToast(`✅ Order saved! Total: ${fmtRs(total)} · Wood: ${woodCft.toFixed(3)} cft`);
+}
+
+function deleteOrder(id){
+  if(!confirm("Delete this order?"))return;
+  orders=orders.filter(o=>o.id!=id);
+  labours=labours.filter(l=>l.orderId!=id);
+  saveAll();renderOrders();renderDashboard();showToast("Order deleted");
+}
+
+// ═══════════════════════════════════════════════════
+// RECEIVE PAYMENT
+// ═══════════════════════════════════════════════════
+let payingOrderId=null;
+function openPaymentModal(orderId){
+  let order=orders.find(o=>o.id==orderId);if(!order)return;
+  payingOrderId=orderId;
+  let remaining=order.orderTotal-(order.advancePayment||0);
+  document.getElementById("paymentModalBody").innerHTML=`
+    <div class="modal-section">
+      <div class="modal-section-title">📋 Order Info</div>
+      <div style="font-size:13px;">
+        <div><strong>Order #:</strong> ${order.orderNo}</div>
+        <div><strong>Party:</strong> ${esc(getPartyName(order.partyId))}</div>
+      </div>
+    </div>
+    <div class="pay-box">
+      <div class="pay-row"><span>Total Amount:</span><strong>${fmtRs(order.orderTotal)}</strong></div>
+      <div class="pay-row"><span>Already Received:</span><strong style="color:var(--green-600)">${fmtRs(order.advancePayment||0)}</strong></div>
+      <div class="pay-row" style="font-weight:700;font-size:14px;margin-top:6px;padding-top:6px;border-top:1px solid #bfdbfe;">
+        <span>Remaining Balance:</span>
+        <strong style="color:${remaining>0?'var(--red)':'var(--green-700)'}">${fmtRs(remaining)}</strong>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:14px;">
+      <label class="form-label">Amount Received Now (Rs.)</label>
+      <input type="number" class="form-input" id="paymentAmountInput" placeholder="e.g., 5000" oninput="previewPaymentBalance(${order.id})">
+    </div>
+    <div id="paymentPreview"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px;">
+      <button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancel</button>
+      <button class="btn btn-success" onclick="savePayment()">💾 Save Payment</button>
+    </div>`;
+  document.getElementById("paymentPreview").innerHTML="";
+  openModal("paymentModal");
+}
+function previewPaymentBalance(orderId){
+  let order=orders.find(o=>o.id==orderId);if(!order)return;
+  let amt=parseFloat(document.getElementById("paymentAmountInput").value)||0;
+  let newPaid=(order.advancePayment||0)+amt;
+  let newRemaining=order.orderTotal-newPaid;
+  document.getElementById("paymentPreview").innerHTML=amt>0?`
+    <div class="cost-box" style="margin-top:8px;">
+      <div class="cost-row"><span>New Total Received:</span><strong>${fmtRs(newPaid)}</strong></div>
+      <div class="cost-row total"><span>New Balance:</span><strong style="color:${newRemaining>0?'var(--red)':'var(--green-700)'}">${fmtRs(newRemaining)}</strong></div>
+    </div>`:"";
+}
+function savePayment(){
+  let order=orders.find(o=>o.id==payingOrderId);if(!order)return;
+  let amt=parseFloat(document.getElementById("paymentAmountInput").value)||0;
+  if(amt<=0){showToast("⚠️ Enter a valid amount");return;}
+  order.advancePayment=(order.advancePayment||0)+amt;
+  let remaining=order.orderTotal-order.advancePayment;
+  order.paymentStatus=remaining<=0?"paid":(order.advancePayment>0?"partial":"unpaid");
+  order.status=order.paymentStatus==="paid"?"completed":"pending";
+  orders=orders.map(o=>o.id===order.id?order:o);
+  saveAll();closeModal("paymentModal");
+  renderOrders();renderDashboard();renderParties();renderKhata();
+  showToast(`✅ ${fmtRs(amt)} received! Balance: ${fmtRs(Math.max(remaining,0))}`);
+}
+
+function renderOrders(){
+  let q=(document.getElementById("orderSearch")?.value||"").toLowerCase();
+  let filtered=orders.filter(o=>{
+    if(!q)return true;
+    return getPartyName(o.partyId).toLowerCase().includes(q)||o.orderNo?.toLowerCase().includes(q);
+  });
+  let html=filtered.map(o=>{
+    let labourCost=labours.filter(l=>l.orderId===o.id).reduce((s,l)=>s+(l.totalCost||0),0);
+    let profit=(o.orderTotal||0)-(o.woodCost||0)-labourCost;
+    return `<div class="order-card">
+      <div class="order-card-top">
+        <div>
+          <div class="order-no">${o.orderNo}</div>
+          <div class="order-party">${esc(getPartyName(o.partyId))}</div>
+          <div class="order-meta">
+            <span>📅 ${o.date}</span>
+            <span>🚪 ${o.doors.length} doors</span>
+            <span>💰 ${fmtRs(o.orderTotal)}</span>
+            <span style="color:#78350f;background:#fef3c7;padding:0 6px;border-radius:4px;">🪵 ${(o.woodCft||0).toFixed(3)} cft</span>
+          </div>
+        </div>
+        <button class="del-btn" onclick="deleteOrder(${o.id})">🗑 Del</button>
+      </div>
+      <div class="order-footer">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span class="badge badge-${o.paymentStatus==='paid'?'paid':o.paymentStatus==='partial'?'partial':'unpaid'}">${o.paymentStatus==='paid'?'✅ Paid':o.paymentStatus==='partial'?'⏳ Partial':'❌ Unpaid'}</span>
+          <span class="profit-chip ${profit>=0?'pos':'neg'}">${profit>=0?'↑':'↓'} ${fmtRs(Math.abs(profit))}</span>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-outline btn-xs" onclick="openOrderModal(${JSON.stringify(o).replace(/"/g,'&quot;')})">✏️ Edit</button>
+          <button class="btn btn-outline btn-xs" onclick="viewOrderDetail(${o.id})">📊 Details</button>
+          ${o.paymentStatus!=='paid'?`<button class="btn btn-success btn-xs" onclick="openPaymentModal(${o.id})">💵 Receive Payment</button>`:''}
+          <button class="btn btn-primary btn-xs" onclick="openBillModal(${o.id})">🖨️ Bill</button>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+  document.getElementById("ordersList").innerHTML=html||`<div class="empty-state"><div class="e-icon">📋</div><p>${q?"No orders found":"No orders yet. Create your first order!"}</p></div>`;
+  
+  let recent=orders.slice(0,5).map(o=>`
+    <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f2f5;font-size:13px;cursor:pointer;" onclick="viewOrderDetail(${o.id})">
+      <div>
+        <span style="font-weight:600;color:var(--green-700);">${o.orderNo}</span>
+        <span style="color:var(--gray-700);margin-left:8px;">${esc(getPartyName(o.partyId))}</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="font-weight:700;">${fmtRs(o.orderTotal)}</span>
+        <span class="badge badge-${o.paymentStatus==='paid'?'paid':o.paymentStatus==='partial'?'partial':'unpaid'}" style="font-size:9px;">${o.paymentStatus}</span>
+      </div>
+    </div>`).join("");
+  document.getElementById("recentOrders").innerHTML=recent||`<div style="color:var(--gray-500);font-size:13px;text-align:center;padding:20px;">No recent orders</div>`;
+}
+
+function viewOrderDetail(id){
+  let order=orders.find(o=>o.id==id);if(!order)return;
+  let orderLabours=labours.filter(l=>l.orderId===order.id);
+  let labourCost=orderLabours.reduce((s,l)=>s+(l.totalCost||0),0);
+  let profit=(order.orderTotal||0)-(order.woodCost||0)-labourCost;
+  
+  let doorsHtml=order.doors.map((d,i)=>{
+    let sq=calcSqft(d.w,d.h)*d.qty;
+    let cft=getDoorCft(d)*d.qty;
+    let amt=sq*getDoorRate(d);
+    return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f2f5;font-size:12px;flex-wrap:wrap;gap:4px;">
+      <span>${i+1}. ${esc(d.name||'Door')} (${d.w}"×${d.h}" × ${d.qty}) ${d.cftMode==='manual'?'<span class="wood-manual-badge">M</span>':'<span class="wood-auto-badge">A</span>'}</span>
+      <span style="font-weight:600;">🪵 ${cft.toFixed(3)} cft | ${fmtRs(amt)}</span>
+    </div>`;
+  }).join("");
+
+  document.getElementById("orderDetailContent").innerHTML=`
+    <div style="background:var(--gray-50);padding:14px;border-radius:var(--radius-md);margin-bottom:14px;">
+      <div class="row-2" style="font-size:13px;gap:6px;">
+        <div><strong>Order #:</strong> ${order.orderNo}</div>
+        <div><strong>Party:</strong> ${esc(getPartyName(order.partyId))}</div>
+        <div><strong>Date:</strong> ${order.date}</div>
+        <div><strong>Delivery:</strong> ${order.deliveryDate||"—"}</div>
+        <div style="grid-column:1/-1"><strong>Address:</strong> ${esc(order.address||"N/A")}</div>
+      </div>
+    </div>
+    <h4 style="font-size:13px;margin-bottom:8px;">🚪 Door List</h4>
+    ${doorsHtml}
+    <div class="cost-box" style="margin-top:14px;">
+      <div class="cost-row"><span>💰 Selling Price:</span><strong>${fmtRs(order.orderTotal)}</strong></div>
+      <div class="cost-row"><span>🪵 Total Wood Used:</span><strong>${(order.woodCft||0).toFixed(3)} cft</strong></div>
+      <div class="cost-row"><span>🪵 Wood Cost:</span><strong>${fmtRs(order.woodCost||0)}</strong></div>
+      <div class="cost-row"><span>👷 Labour Cost:</span><strong>${fmtRs(labourCost)}</strong></div>
+      <div class="cost-row total"><span>📊 Net Cost:</span><strong>${fmtRs((order.woodCost||0)+labourCost)}</strong></div>
+      <div class="cost-row ${profit>=0?'profit':'loss'}"><span>${profit>=0?'✅ PROFIT':'❌ LOSS'}:</span><strong>${fmtRs(Math.abs(profit))} ${profit>=0?'🎉':''}</strong></div>
+    </div>
+    <div class="pay-box" style="margin-top:12px;">
+      <h4 style="font-size:13px;margin-bottom:8px;">💵 Payment Details</h4>
+      <div class="pay-row"><span>Total Amount:</span><strong>${fmtRs(order.orderTotal)}</strong></div>
+      <div class="pay-row"><span>Advance Received:</span><strong style="color:var(--green-600)">${fmtRs(order.advancePayment||0)}</strong></div>
+      <div class="pay-row"><span>Remaining Balance:</span><strong style="color:${(order.orderTotal-(order.advancePayment||0))>0?'var(--red)':'var(--green-700)'}">${fmtRs(order.orderTotal-(order.advancePayment||0))}</strong></div>
+      <div class="pay-row"><span>Status:</span><span class="badge badge-${order.paymentStatus==='paid'?'paid':order.paymentStatus==='partial'?'partial':'unpaid'}">${order.paymentStatus}</span></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px;">
+      <button class="btn btn-outline" onclick="closeModal('orderDetailModal')">Close</button>
+      <button class="btn btn-primary" onclick="closeModal('orderDetailModal');openBillModal(${order.id})">🖨️ Print Bill</button>
+    </div>`;
+  openModal("orderDetailModal");
+}
+
+// ═══════════════════════════════════════════════════
+// BILL / INVOICE PRINT — sirf total amount (wood/labour cost client ko nahi dikhti)
+// ═══════════════════════════════════════════════════
+function openBillModal(orderId){
+  let order=orders.find(o=>o.id==orderId);if(!order)return;
+  let party=getPartyById(order.partyId)||{name:"Unknown"};
+  let remaining=order.orderTotal-(order.advancePayment||0);
+  
+  let doorsTable=order.doors.map((d,i)=>{
+    let sq=calcSqft(d.w,d.h)*d.qty;
+    let amt=sq*getDoorRate(d);
+    return `<tr>
+      <td style="padding:8px 10px;">${i+1}</td>
+      <td style="padding:8px 10px;">${esc(d.name||'Door')} — ${d.w}"×${d.h}"</td>
+      <td style="padding:8px 10px;text-align:center;">${d.qty}</td>
+      <td style="padding:8px 10px;text-align:right;">${sq.toFixed(2)}</td>
+      <td style="padding:8px 10px;text-align:right;">${fmtRs(getDoorRate(d))}</td>
+      <td style="padding:8px 10px;text-align:right;font-weight:600;">${fmtRs(amt)}</td>
+    </tr>`;
+  }).join("");
+
+  document.getElementById("billContent").innerHTML=`
+    <div class="print-area" style="font-family:Inter,sans-serif;max-width:100%;">
+      <div class="bill-header" style="background:linear-gradient(135deg,#0a2218,#1a4a3a);color:white;padding:18px 20px;border-radius:12px;margin-bottom:16px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;letter-spacing:1px;">🚪 HK WOOD DOORS</div>
+        <div style="font-size:10px;opacity:0.7;letter-spacing:2px;margin-top:3px;">INVOICE / BILL</div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;font-size:12px;">
+        <div style="background:#f9fafb;padding:10px 14px;border-radius:10px;border:1px solid #e5e7eb;">
+          <div style="font-weight:700;margin-bottom:4px;font-size:10px;color:#6b7280;text-transform:uppercase;">Bill To</div>
+          <div style="font-weight:700;font-size:14px;">${esc(party.name)}</div>
+          <div style="color:#6b7280;font-size:11px;">${party.phone||""}</div>
+          <div style="color:#6b7280;font-size:11px;">${party.address||""}</div>
+        </div>
+        <div style="background:#f9fafb;padding:10px 14px;border-radius:10px;border:1px solid #e5e7eb;">
+          <div style="font-weight:700;margin-bottom:4px;font-size:10px;color:#6b7280;text-transform:uppercase;">Invoice Details</div>
+          <div style="font-size:12px;"><strong>Invoice #:</strong> ${order.orderNo}</div>
+          <div style="font-size:12px;"><strong>Date:</strong> ${order.date}</div>
+          <div style="font-size:12px;"><strong>Delivery:</strong> ${order.deliveryDate||"—"}</div>
+        </div>
+      </div>
+      
+      <table class="bill-table" style="width:100%;border-collapse:collapse;font-size:11px;margin-bottom:12px;">
+        <thead>
+          <tr style="background:#0f2e26;color:white;">
+            <th style="padding:8px 10px;text-align:left;border-radius:6px 0 0 0;">#</th>
+            <th style="padding:8px 10px;text-align:left;">Door Description</th>
+            <th style="padding:8px 10px;text-align:center;">Qty</th>
+            <th style="padding:8px 10px;text-align:right;">Sqft</th>
+            <th style="padding:8px 10px;text-align:right;">Rate</th>
+            <th style="padding:8px 10px;text-align:right;border-radius:0 6px 0 0;">Amount</th>
+          </tr>
+        </thead>
+        <tbody>${doorsTable}</tbody>
+        <tfoot>
+          <tr style="background:#f0fdf4;font-weight:700;">
+            <td colspan="5" style="padding:8px 10px;text-align:right;font-size:13px;">Total Amount</td>
+            <td style="padding:8px 10px;text-align:right;font-size:15px;color:#0f2e26;">${fmtRs(order.orderTotal)}</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="padding:6px 10px;text-align:right;color:#6b7280;font-size:11px;">Advance Received</td>
+            <td style="padding:6px 10px;text-align:right;color:#059669;font-weight:600;font-size:12px;">${fmtRs(order.advancePayment||0)}</td>
+          </tr>
+          <tr style="background:${remaining>0?'#fee2e2':'#d1fae5'};">
+            <td colspan="5" style="padding:8px 10px;text-align:right;font-weight:700;font-size:13px;">Balance Due</td>
+            <td style="padding:8px 10px;text-align:right;font-size:16px;font-weight:800;color:${remaining>0?'#dc2626':'#059669'};">${fmtRs(remaining)}</td>
+          </tr>
+        </tfoot>
+      </table>
+      
+      ${order.notes?`<div style="background:#fffbeb;padding:10px 14px;border-radius:8px;font-size:11px;border:1px solid #fde68a;margin-bottom:10px;"><strong>Notes:</strong> ${esc(order.notes)}</div>`:""}
+      
+      <div class="bill-footer" style="text-align:center;font-size:10px;color:#9ca3af;padding:10px;border-top:1px solid #e5e7eb;margin-top:4px;">
+        Thank you for your business! — HK Wood Doors
+      </div>
+    </div>`;
+  openModal("billModal");
+}
+
+// ═══════════════════════════════════════════════════
+// LABOUR
+// ═══════════════════════════════════════════════════
+function openLabourModal(labour=null){
+  editingLabourId=labour?.id||null;
+  let today=new Date().toISOString().slice(0,10);
+  currentLabourDoors=labour?.doors?JSON.parse(JSON.stringify(labour.doors)):[{id:Date.now(),name:"",w:0,h:0,qty:1}];
+  
+  let orderOpts="<option value=''>-- Link to Order --</option>";
+  orders.forEach(o=>{orderOpts+=`<option value="${o.id}" ${labour?.orderId===o.id?"selected":""}>${o.orderNo} — ${esc(getPartyName(o.partyId))}</option>`;});
+  
+  document.getElementById("labourModalBody").innerHTML=`
+    <div class="modal-section">
+      <div class="modal-section-title">👷 Labour Info</div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Labour Name *</label><input class="form-input" id="labourName" value="${esc(labour?.name||"")}" placeholder="e.g., Riaz Sattar"></div>
+        <div class="form-group"><label class="form-label">Link to Order</label><select class="form-select" id="labourOrderId" onchange="loadLabourOrderDoors()">${orderOpts}</select></div>
+      </div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Start Date</label><input type="date" class="form-input" id="labourStart" value="${labour?.startDate||today}"></div>
+        <div class="form-group"><label class="form-label">End Date</label><input type="date" class="form-input" id="labourEnd" value="${labour?.endDate||""}"></div>
+      </div>
+    </div>
+
+    <div class="modal-section" style="background:#fffbeb;border-color:#fde68a;">
+      <div class="modal-section-title" style="color:#92400e;">📐 Quick Size Templates</div>
+      <div class="template-grid">${DOOR_TEMPLATES.map(t=>`<button class="tmpl-btn" onclick="applyLabourTemplate('${t}')">${t}</button>`).join("")}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">🚪 Door List</div>
+      <div id="labourDoorsContainer"></div>
+      <button class="btn btn-outline btn-sm" onclick="addLabourDoor()" style="margin-top:6px;">+ Add Door</button>
+    </div>
+
+    <div class="modal-section" style="background:var(--green-50);border-color:#bbf7d0;">
+      <div class="modal-section-title">💰 Cost Calculation</div>
+      <div class="row-3">
+        <div class="form-group"><label class="form-label">Rate per Sqft (Rs.)</label><input type="number" class="form-input" id="labourRateSqft" value="${labour?.rateSqft||""}" placeholder="e.g., 60" oninput="calcLabourTotal()"></div>
+        <div class="form-group"><label class="form-label">Total Sqft</label><input class="form-input" id="labourTotalSqft" readonly style="background:#e2e8f0;font-weight:600;"></div>
+        <div class="form-group"><label class="form-label">Total Labour Cost</label><input class="form-input" id="labourTotalCost" readonly style="background:#e2e8f0;font-weight:700;color:var(--green-700);"></div>
+      </div>
+      <div class="row-2">
+        <div class="form-group"><label class="form-label">Amount Paid</label><input type="number" class="form-input" id="labourPaidAmount" value="${labour?.paidAmount||0}" oninput="calcLabourTotal()"></div>
+        <div class="form-group"><label class="form-label">Remaining</label><input class="form-input" id="labourRemainingAmount" readonly style="background:#e2e8f0;font-weight:700;color:var(--red);"></div>
+      </div>
+    </div>
+
+    <div class="form-group"><label class="form-label">Description / Notes</label><textarea class="form-input form-textarea" id="labourDesc" rows="2" placeholder="Work details...">${esc(labour?.description||"")}</textarea></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-outline" onclick="closeModal('labourModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveLabour()">💾 Assign Labour</button>
+    </div>`;
+  
+  renderLabourDoorsUI();
+  calcLabourTotal();
+  openModal("labourModal");
+}
+
+function loadLabourOrderDoors(){
+  let orderId=document.getElementById("labourOrderId").value;
+  if(!orderId)return;
+  let order=orders.find(o=>o.id==orderId);
+  if(order?.doors){
+    currentLabourDoors=order.doors.map(d=>({id:Date.now()+Math.random(),name:d.name||"Door",w:d.w,h:d.h,qty:d.qty||1}));
+    renderLabourDoorsUI();calcLabourTotal();showToast(`✅ ${currentLabourDoors.length} doors loaded`);
+  }
+}
+function applyLabourTemplate(tmpl){
+  let[w,h]=tmpl.split("x").map(Number);
+  currentLabourDoors.push({id:Date.now()+Math.random(),name:`${tmpl} Door`,w,h,qty:1});
+  renderLabourDoorsUI();calcLabourTotal();showToast(`✅ ${tmpl} added`);
+}
+function addLabourDoor(){currentLabourDoors.push({id:Date.now()+Math.random(),name:"",w:0,h:0,qty:1});renderLabourDoorsUI();}
+function removeLabourDoor(id){currentLabourDoors=currentLabourDoors.filter(d=>d.id!=id);renderLabourDoorsUI();calcLabourTotal();}
+function updateLabourDoor(id,key,val){
+  let d=currentLabourDoors.find(d=>d.id==id);
+  if(d){if(['w','h','qty'].includes(key))d[key]=parseFloat(val)||0;else d[key]=val;}
+  renderLabourDoorsUI();calcLabourTotal();
+}
+function calcLabourTotal(){
+  let totalSqft=currentLabourDoors.reduce((s,d)=>s+((d.w*d.h/144)*d.qty),0);
+  let rate=parseFloat(document.getElementById("labourRateSqft")?.value)||0;
+  let totalCost=totalSqft*rate;
+  let paid=parseFloat(document.getElementById("labourPaidAmount")?.value)||0;
+  let remaining=totalCost-paid;
+  let el=(id)=>document.getElementById(id);
+  if(el("labourTotalSqft"))el("labourTotalSqft").value=totalSqft.toFixed(2)+" sqft";
+  if(el("labourTotalCost"))el("labourTotalCost").value="Rs. "+Math.round(totalCost).toLocaleString();
+  if(el("labourRemainingAmount"))el("labourRemainingAmount").value="Rs. "+Math.round(remaining).toLocaleString();
+  return{totalSqft,totalCost,paid,remaining};
+}
+function renderLabourDoorsUI(){
+  let container=document.getElementById("labourDoorsContainer");if(!container)return;
+  container.innerHTML=currentLabourDoors.map((d,i)=>{
+    let sq=(d.w*d.h/144),total=sq*d.qty;
+    return `<div class="door-row" style="background:#fffbeb;border-color:#fde68a;">
+      <div class="door-row-head">
+        <div class="door-row-label">🚪 Door ${i+1} ${d.name?"— "+esc(d.name):""}</div>
+        <button class="del-btn" onclick="removeLabourDoor(${d.id})">Remove</button>
+      </div>
+      <div class="row-3" style="margin-bottom:8px;">
+        <div><label class="form-label">Name</label><input class="form-input" placeholder="Door name" value="${esc(d.name)}" onchange="updateLabourDoor(${d.id},'name',this.value)"></div>
+        <div><label class="form-label">Width (inch)</label><input class="form-input" type="number" placeholder='W"' value="${d.w||""}" onchange="updateLabourDoor(${d.id},'w',this.value)"></div>
+        <div><label class="form-label">Height (inch)</label><input class="form-input" type="number" placeholder='H"' value="${d.h||""}" onchange="updateLabourDoor(${d.id},'h',this.value)"></div>
+      </div>
+      <div class="row-2">
+        <div><label class="form-label">Qty</label><input class="form-input" type="number" value="${d.qty}" onchange="updateLabourDoor(${d.id},'qty',this.value)"></div>
+        <div style="background:white;border-radius:8px;padding:8px;border:1px solid #fde68a;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:12px;">
+          <span style="color:var(--gray-500);">${sq.toFixed(2)} sqft × ${d.qty}</span>
+          <strong style="color:var(--gold);font-size:14px;">${total.toFixed(2)} sqft</strong>
+        </div>
+      </div>
+    </div>`;
+  }).join("")||`<div class="empty-state" style="padding:16px;"><p>No doors. Use templates or Add Door.</p></div>`;
+}
+
+function saveLabour(){
+  let name=document.getElementById("labourName").value.trim();
+  if(!name){showToast("⚠️ Labour name required");return;}
+  let validDoors=currentLabourDoors.filter(d=>d.w>0&&d.h>0);
+  if(!validDoors.length){showToast("⚠️ Add at least one door");return;}
+  let{totalSqft,totalCost,paid,remaining}=calcLabourTotal();
+  let orderId=document.getElementById("labourOrderId").value?parseInt(document.getElementById("labourOrderId").value):null;
+  let labour={
+    id:editingLabourId||++nextId,name,orderId,
+    startDate:document.getElementById("labourStart").value,
+    endDate:document.getElementById("labourEnd").value,
+    doors:validDoors,
+    rateSqft:parseFloat(document.getElementById("labourRateSqft").value)||0,
+    totalSqft,totalCost,paidAmount:paid,remainingAmount:remaining,
+    description:document.getElementById("labourDesc").value,
+    status:"active"
+  };
+  if(editingLabourId)labours=labours.map(l=>l.id===editingLabourId?labour:l);
+  else labours.unshift(labour);
+  saveAll();closeModal("labourModal");renderLabourList();renderDashboard();
+  showToast(`✅ ${name} assigned — ${totalSqft.toFixed(1)} sqft, ${fmtRs(totalCost)}`);
+}
+
+function renderLabourList(){
+  let html=labours.map(l=>{
+    let orderName=l.orderId?(orders.find(o=>o.id===l.orderId)?.orderNo||"N/A"):"No Order";
+    let remaining=(l.totalCost||0)-(l.paidAmount||0);
+    return `<div class="order-card">
+      <div class="order-card-top">
+        <div>
+          <div class="order-no">${l.startDate||"—"} → ${l.endDate||"ongoing"}</div>
+          <div class="order-party">👷 ${esc(l.name)}</div>
+          <div class="order-meta">
+            <span>📐 ${(l.totalSqft||0).toFixed(2)} sqft</span>
+            <span>💰 ${fmtRs(l.totalCost||0)}</span>
+            <span>🔗 ${orderName}</span>
+          </div>
+        </div>
+        <button class="del-btn" onclick="deleteLabour(${l.id})">🗑 Del</button>
+      </div>
+      <div class="order-footer">
+        <div>
+          <span style="font-size:11px;color:var(--gray-500);">Paid: <strong style="color:var(--green-600)">${fmtRs(l.paidAmount||0)}</strong></span>
+          <span style="font-size:11px;margin-left:12px;">Baqi: <strong style="color:${remaining>0?'var(--red)':'var(--green-600)'}">${fmtRs(remaining)}</strong></span>
+        </div>
+        <button class="btn btn-outline btn-xs" onclick="editLabour(${l.id})">✏️ Edit</button>
+      </div>
+    </div>`;
+  }).join("");
+  document.getElementById("labourList").innerHTML=html||`<div class="empty-state"><div class="e-icon">👷</div><p>No labour records yet</p></div>`;
+}
+
+function editLabour(id){let l=labours.find(l=>l.id===id);if(l)openLabourModal(l);}
+function deleteLabour(id){
+  if(!confirm("Delete this labour record?"))return;
+  labours=labours.filter(l=>l.id!=id);
+  saveAll();renderLabourList();renderDashboard();showToast("Labour deleted");
+}
+
+// ═══════════════════════════════════════════════════
+// KHATA / LEDGER
+// ═══════════════════════════════════════════════════
+function updateKhataFilter(){
+  let sel=document.getElementById("khataPartyFilter");
+  if(!sel)return;
+  let current=sel.value;
+  sel.innerHTML="<option value=''>-- All Parties --</option>"+
+    parties.map(p=>`<option value="${p.id}" ${p.id==current?"selected":""}>${esc(p.name)}</option>`).join("");
+}
+function showPartyKhata(partyId){
+  switchTab("tabKhata");
+  setTimeout(()=>{
+    document.getElementById("khataPartyFilter").value=partyId;
+    renderKhata();
+  },50);
+}
+function renderKhata(){
+  let filterPartyId=document.getElementById("khataPartyFilter")?.value;
+  let partiesToShow=filterPartyId?parties.filter(p=>p.id==filterPartyId):parties;
+  
+  if(!partiesToShow.length){
+    document.getElementById("khataContent").innerHTML=`<div class="empty-state"><div class="e-icon">📒</div><p>No parties found</p></div>`;
+    return;
+  }
+  
+  let html=partiesToShow.map(p=>{
+    let pOrders=orders.filter(o=>o.partyId==p.id).sort((a,b)=>new Date(a.date)-new Date(b.date));
+    let totalBill=pOrders.reduce((s,o)=>s+(o.orderTotal||0),0);
+    let totalPaid=pOrders.reduce((s,o)=>s+(o.advancePayment||0),0);
+    let opening=p.openingBalance||0;
+    let remaining=(totalBill+opening)-totalPaid;
+    
+    let openingRow=opening?`<div class="report-row" style="background:#fffbeb;border-color:#fde68a;">
+      <div><span style="font-weight:600;color:#92400e;">📌 Opening Balance (Purana Baqaya)</span></div>
+      <div style="font-weight:700;color:#92400e;">${fmtRs(opening)}</div>
+    </div>`:"";
+    
+    let rows=pOrders.map(o=>`
+      <div class="report-row">
+        <div>
+          <span style="font-weight:600;color:var(--green-700);">${o.orderNo}</span>
+          <span style="margin-left:8px;color:var(--gray-500);">${o.date}</span>
+          <span style="margin-left:8px;font-size:11px;">${o.doors.length} doors</span>
+          <span style="margin-left:8px;font-size:10px;color:#78350f;background:#fef3c7;padding:0 4px;border-radius:3px;">🪵 ${(o.woodCft||0).toFixed(3)} cft</span>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:700;">${fmtRs(o.orderTotal)}</div>
+          <div style="font-size:10px;color:var(--green-600);">Paid: ${fmtRs(o.advancePayment||0)}</div>
+          <div style="font-size:10px;color:${(o.orderTotal-(o.advancePayment||0))>0?'var(--red)':'var(--green-600)'};">Baqi: ${fmtRs(o.orderTotal-(o.advancePayment||0))}</div>
+          ${o.paymentStatus!=='paid'?`<button class="btn btn-success btn-xs" style="margin-top:6px;" onclick="openPaymentModal(${o.id})">💵 Receive Payment</button>`:''}
+        </div>
+      </div>`).join("");
+    
+    return `<div class="khata-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;">👤 ${esc(p.name)}</div>
+          <div style="font-size:12px;color:var(--gray-500);">${p.phone||""} · ${p.address||""}</div>
+        </div>
+        <span class="badge ${remaining<=0?'badge-paid':'badge-unpaid'}" style="font-size:11px;">${remaining<=0?"✅ Clear":"⏳ Pending"}</span>
+      </div>
+      <hr class="divider">
+      ${openingRow}
+      ${rows||`<div style="color:var(--gray-500);font-size:12px;text-align:center;padding:10px;">No orders</div>`}
+      <div class="khata-balance ${remaining<=0?'cr':'dr'}">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;opacity:0.7;">Total Bill: ${fmtRs(totalBill+opening)}</div>
+          <div style="font-size:11px;opacity:0.7;">Total Paid: ${fmtRs(totalPaid)}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;opacity:0.7;">${remaining<=0?"Balance":"Balance Due"}</div>
+          <div style="font-size:20px;font-weight:900;">${fmtRs(Math.abs(remaining))}</div>
+          <div style="font-size:10px;font-weight:700;">${remaining<=0?"CLEAR ✅":"BAQI ❌"}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+  
+  document.getElementById("khataContent").innerHTML=html;
+}
+
+// ═══════════════════════════════════════════════════
+// WOOD SUMMARY (per wood type breakdown)
+// ═══════════════════════════════════════════════════
+function renderWoodSummary(){
+  let el=document.getElementById("woodSummary");
+  if(!el)return;
+  let summary={};
+  orders.forEach(o=>{
+    (o.doors||[]).forEach(d=>{
+      let cft=getDoorCft(d)*d.qty;
+      let cost=getDoorWoodCost(d)*d.qty;
+      let name=getWoodName(d.woodId);
+      if(!summary[name])summary[name]={cft:0,cost:0};
+      summary[name].cft+=cft;
+      summary[name].cost+=cost;
+    });
+  });
+  let entries=Object.entries(summary);
+  if(!entries.length){
+    el.innerHTML=`<div class="empty-state" style="padding:16px;"><p>Abhi koi wood usage nahi hai</p></div>`;
+    return;
+  }
+  el.innerHTML=entries.map(([name,d])=>`
+    <div class="wood-summary-row">
+      <span>🪵 ${esc(name)}</span>
+      <span><strong>${d.cft.toFixed(2)} cft</strong> · ${fmtRs(d.cost)}</span>
+    </div>`).join("");
+}
+
+// ═══════════════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════════════
+function renderDashboard(){
+  let totalOrders=orders.length;
+  let totalDoors=orders.reduce((s,o)=>s+(o.doors?.length||0),0);
+  let totalRevenue=orders.reduce((s,o)=>s+(o.orderTotal||0),0);
+  let totalWoodCost=orders.reduce((s,o)=>s+(o.woodCost||0),0);
+  let totalWoodCft=orders.reduce((s,o)=>s+(o.woodCft||0),0);
+  let totalLabourCost=labours.reduce((s,l)=>s+(l.totalCost||0),0);
+  let totalProfit=totalRevenue-totalWoodCost-totalLabourCost;
+  let totalUnpaid=orders.filter(o=>o.paymentStatus!=="paid").reduce((s,o)=>s+(o.orderTotal-(o.advancePayment||0)),0);
+  
+  document.getElementById("statsArea").innerHTML=`
+    <div class="stat-card"><div class="stat-icon green">📋</div><div class="stat-info"><div class="num">${totalOrders}</div><div class="lbl">Total Orders</div><div class="sub">${totalDoors} doors</div></div></div>
+    <div class="stat-card"><div class="stat-icon gold">💰</div><div class="stat-info"><div class="num" style="font-size:17px;">${fmtRs(totalRevenue)}</div><div class="lbl">Revenue</div></div></div>
+    <div class="stat-card"><div class="stat-icon ${totalProfit>=0?'green':'red'}">📊</div><div class="stat-info"><div class="num" style="font-size:17px;color:${totalProfit>=0?'var(--green-700)':'var(--red)'}">${fmtRs(Math.abs(totalProfit))}</div><div class="lbl">${totalProfit>=0?"Net Profit":"Net Loss"}</div></div></div>
+    <div class="stat-card"><div class="stat-icon blue">🪵</div><div class="stat-info"><div class="num" style="font-size:17px;">${totalWoodCft.toFixed(1)} cft</div><div class="lbl">Total Wood Used</div><div class="sub">${fmtRs(totalWoodCost)} cost</div></div></div>
+  `;
+  renderWoodSummary();
+}
+
+// ═══════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════
+function switchTab(tabId){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.getElementById(tabId).classList.add("active");
+  document.querySelectorAll(".tab-pill").forEach(b=>b.classList.remove("active"));
+  let btn=[...document.querySelectorAll(".tab-pill")].find(b=>b.dataset.tab===tabId);
+  if(btn)btn.classList.add("active");
+  if(tabId==="tabHome"){renderDashboard();renderOrders();}
+  if(tabId==="tabOrders")renderOrders();
+  if(tabId==="tabLabour")renderLabourList();
+  if(tabId==="tabKhata"){updateKhataFilter();renderKhata();}
+  if(tabId==="tabParties")renderParties();
+}
+
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+loadData();
+updateKhataFilter();
+renderDashboard();
+renderOrders();
+renderLabourList();
+renderParties();
+
+document.querySelectorAll(".tab-pill").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab)));
+
+// Expose globals
+window.openPartyModal=openPartyModal;window.saveParty=saveParty;window.deleteParty=deleteParty;window.showPartyKhata=showPartyKhata;
+window.openOrderModal=openOrderModal;window.saveOrder=saveOrder;window.deleteOrder=deleteOrder;window.viewOrderDetail=viewOrderDetail;window.openBillModal=openBillModal;
+window.openPaymentModal=openPaymentModal;window.previewPaymentBalance=previewPaymentBalance;window.savePayment=savePayment;
+window.openLabourModal=openLabourModal;window.saveLabour=saveLabour;window.deleteLabour=deleteLabour;window.editLabour=editLabour;window.loadLabourOrderDoors=loadLabourOrderDoors;
+window.openWoodModal=openWoodModal;window.saveWoodRates=saveWoodRates;window.addWoodType=addWoodType;window.removeWood=removeWood;
+window.exportBackup=exportBackup;window.importBackup=importBackup;
+window.closeModal=closeModal;
+window.addOrderDoor=addOrderDoor;window.removeOrderDoor=removeOrderDoor;window.updateOrderDoor=updateOrderDoor;window.applyOrderTemplate=applyOrderTemplate;window.calcOrderSummary=calcOrderSummary;window.selectGalleryDoor=selectGalleryDoor;window.toggleCftMode=toggleCftMode;
+window.addLabourDoor=addLabourDoor;window.removeLabourDoor=removeLabourDoor;window.updateLabourDoor=updateLabourDoor;window.applyLabourTemplate=applyLabourTemplate;window.calcLabourTotal=calcLabourTotal;
+window.renderKhata=renderKhata;window.switchTab=switchTab;
+
+// Register service worker for offline support (PWA requirement)
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
